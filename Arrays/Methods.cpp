@@ -11,8 +11,9 @@ using namespace std;
 int Array5()
 {
 	int n, i;
+	cout << "N = ";
 	cin >> n;
-	int a[100];
+	int a[10];
 	a[0] = 1;
 	a[1] = 1;
 	for (i = 2; i < n; ++i) {
@@ -27,8 +28,9 @@ int Array5()
 
 int Array10()
 {
-	int a[100];
+	int a[10];
 	int n, i;
+	cout << "N = ";
 	cin >> n;
 	for (i = 0; i < n; ++i) {
 		cin >> a[i];
@@ -45,8 +47,9 @@ int Array10()
 
 int Array15()
 {
-	int a[100];
+	int a[10];
 	int n, i;
+	cout << "N = ";
 	cin >> n;
 	for (i = 0; i < n; ++i) {
 		cin >> a[i];
@@ -62,7 +65,7 @@ int Array15()
 
 int Array20()
 {
-	double a[100];
+	double a[10];
 	int n, k, l, i;
 	cout << "N = ";
 	cin >> n;
@@ -81,7 +84,7 @@ int Array20()
 
 int Array26()
 {
-	int a[100];
+	int a[10];
 	int n, i;
 	cout << "N = ";
 	cin >> n;
@@ -100,7 +103,7 @@ int Array26()
 
 int Array39()
 {
-	double a[100];
+	double a[10];
 	int i, n;
 	cout << "N = ";
 	cin >> n;
@@ -131,7 +134,7 @@ Bk = Ak / 2, в противном случае*/
 
 int Array52()
 {
-	float a[100], b[100];
+	float a[10], b[10];
 	int n, k;
 	cout << "N = ";
 	cin >> n;
@@ -152,8 +155,10 @@ A2, A4, A6, …, A1, A3, A5, … .*/
 
 int Array57()
 {
-	float a[100], b[100];
+	float a[10], b[10];
 	int n, i;
+	cout << "N = ";
+	cin >> n;
 	for (i = 0; i < n; ++i)cin >> a[i];
 	int k = 0;
 	for (i = 0; i < n; i += 2) {
@@ -364,14 +369,6 @@ int Array125()
 		++len;
 	}
 
-	if (len < l) {
-		b[++i2] = 0;
-		endn -= len - 1;
-	}
-	else {
-		for (i3 = 1; i3 <= len; ++i3)b[++i2] = a[i - 1];
-	}
-
 	for (i - 0; i < endn; ++i)a[i] = b[i];
 
 	for (i = 0; i < endn; ++i)cout << a[i] << endl;
@@ -379,4 +376,154 @@ int Array125()
 	return 0;
 }
 
-/**/
+/*Array130. Дан целочисленный массив размера N. Преобразовать массив, увели-чив все его серии наибольшей длины на один элемент.*/
+
+int Array130()
+{
+	int a[20];
+	int n;
+	cout << "N = ";
+	cin >> n;
+	int i;
+	for (i = 0; i < n; ++i) {
+		cin >> a[i];
+	}
+	int len = 1, maxlen = 1, endmaxseries = 1;
+	for (i = 1; i < n; ++i) {
+		if (a[i - 1] != a[i]) {
+			if (len >= maxlen) maxlen = len;
+			len = 0;
+		}
+		++len;
+	}
+
+	int i2;
+	for (i = 1; i < n; ++i) {
+		if (a[i - 1] != a[i]) {
+			if (len == maxlen) {
+				for (i2 = ++n - 1; i2 > i; --i2) a[i2] = a[i2 - 1];
+				++i;
+			}
+			len = 0;
+		}
+		++len;
+	}
+
+	for (i = 0; i < n; ++i)cout << a[i] << endl;
+	cout << endl;
+	return 0;
+}
+
+
+/*Array132. Дано множество A из N точек (точки заданы своими координатами x, y). Среди всех точек этого множества, лежащих во второй четверти, най-ти точку, наиболее удаленную от начала координат. Если таких точек нет, то вывести точку с нулевыми координатами.*/
+
+int Array132()
+{
+	float a[10], b[10];
+	int n, i;
+	cout << "N = ";
+	cin >> n;
+	for (i = 0; i < n; ++i) {
+		cout << "x = ";
+		cin >> a[i];
+		cout << "y = ";
+		cin >> b[i];	
+	}
+	int amax;
+	float r, rmax = 0;
+	for (i = 0; i < n; ++i) {
+		if (a[i] < 0 && b[i] > 0) {
+			r = sqrt(pow(a[i], 2) + pow(b[i], 2));
+			if (r > rmax) {
+				rmax = r;
+				amax = i;
+			}
+		}
+	}
+
+	if (rmax != 0) cout << "(" << a[amax] << "," << b[amax] << ")" << endl;
+	else cout << "(0,0)" << endl;
+	return 0;
+}
+
+/*Array135. Даны множества A и B, состоящие соответственно из N1 и N2 точек (точки заданы своими координатами x, y). Найти минимальное расстояние между точками этих множеств и сами точки, расположенные на этом рас-стоянии (вначале выводится точка из множества A, затем точка из множе-ства B).*/
+
+int Array135()
+{
+	float x1[5], y1[5], x2[5], y2[5];
+	int i, n;
+	cout << "N = ";
+	cin >> n;
+	for (i = 0; i < n; ++i) {
+		cout << "x = ";
+		cin >> x1[i];
+		cout << "y = ";
+		cin >> y1[i];
+	}
+	for (i = 0; i < n; ++i) {
+		cout << "x = ";
+		cin >> x2[i];
+		cout << "y = ";
+		cin >> y2[i];
+	}
+	int amin = 0, bmin = 0, i2;
+	float r, rmin = sqrt(pow(x1[0] - x2[0], 2) + pow(y1[0] - y2[0], 2));
+	for (i = 0; i < n; ++i) {
+		for (i2 = 0; i2 < n; ++i2) {
+			r = sqrt(pow(x1[i] - x2[i2], 2) + pow(y1[i] - y2[i2], 2));
+			if (r < rmin) {
+				rmin = r;
+				amin = i;
+				bmin = i2;
+			}
+		}
+	}
+
+	cout << "rmin = " << rmin << endl;
+	cout << "(" << x1[amin] << "," << y1[amin] << ")" << endl;
+	cout << "(" << x2[bmin] << "," << y2[bmin] << ")" << endl;
+	return 0;
+}
+
+/*Array138. Дано множество A из N точек (N > 2, точки заданы своими коор-динатами x, y). Найти наименьший периметр треугольника, вершины кото-рого принадлежат различным точкам множества A, и сами эти точки (точ-ки выводятся в том же порядке, в котором они перечислены при задании множества A).*/
+
+int Array138()
+{
+	float x[10], y[10];
+	int i, n;
+	cout << "N = ";
+	cin >> n;
+	for (i = 0; i < n; ++i) {
+		cout << "x = ";
+		cin >> x[i];
+		cout << "y = ";
+		cin >> y[i];
+	}
+	int p1 = 0, p2 = 1, p3 = 2, i2, i3;
+	float p, pmin = 0;
+	pmin += sqrt(pow(x[0] - x[1], 2) + pow(y[0] - y[1], 2));
+	pmin += sqrt(pow(x[1] - x[2], 2) + pow(y[1] - y[2], 2));
+	pmin += sqrt(pow(x[2] - x[0], 2) + pow(y[2] - y[0], 2));
+
+	for (i = 0; i < n; ++i) {
+		for (i2 = i + 1; i2 < n; ++i2) {
+			for (i3 = i2 + 1; i3 < n; ++i3) {
+				p = 0;
+				p += sqrt(pow(x[i] - x[i2], 2) + pow(y[i] - y[i2], 2));
+				p += sqrt(pow(x[i2] - x[i3], 2) + pow(y[i2] - y[i3], 2));
+				p += sqrt(pow(x[i] - x[i3], 2) + pow(y[i] - y[i3], 2));
+				if (p < pmin) {
+					p1 = i;
+					p2 = i2;
+					p3 = i3;
+					pmin = p;
+				}
+			}
+		}
+	}
+	cout << "pmin = " << pmin << endl;
+	cout << "(" << x[p1] << "," << y[p1] << ")" << endl;
+	cout << "(" << x[p2] << "," << y[p2] << ")" << endl;
+	cout << "(" << x[p3] << "," << y[p3] << ")" << endl;
+	return 0;
+}
