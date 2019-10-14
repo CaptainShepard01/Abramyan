@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 #include <algorithm>
-# include <iomanip>
+#include <iomanip>
 #include <conio.h>
 #include "MyLib.h";
 using namespace std;
@@ -10,7 +10,7 @@ using namespace std;
 int menu();
 int main()
 {
-	Matrix_20();
+	Matrix_62();
 	/*setlocale(LC_ALL, "Russian");
 	int answer = menu();
 	switch (answer)

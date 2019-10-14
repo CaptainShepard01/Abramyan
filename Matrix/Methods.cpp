@@ -1,7 +1,7 @@
 ﻿#include <stdio.h>
 #include <iostream>
 #include <cmath>
-# include <iomanip>
+#include <iomanip>
 #include <algorithm>
 #include <conio.h>
 #include "MyLib.h";
@@ -228,15 +228,215 @@ int Matrix_46()
 	for (i = 0; i < n; ++i) {
 		elminstlb[i] = p[0][i];
 	}
-	for (i = 1; i < m; ++i) {
-		for (j = 1; j < n; ++j) {
-			if (p[i][j] > elmaxstr[i - 1]) {
-				elmaxstr[i - 1] = p[i][j];
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < n; ++j) {
+			if (p[i][j] > elmaxstr[i]) {
+				elmaxstr[i] = p[i][j];
 			}
-			if (p[i][j] < elminstlb[i - 1]) {
-				elminstlb[i - 1] = p[i][j];
+			if (p[i][j] < elminstlb[j]) {
+				elminstlb[j] = p[i][j];
+			}
+			if (elmaxstr[i] == elminstlb[j]) {
+				elmaxmin = p[i][j];
 			}
 		}
 	}
+	cout << "Max v str and min v stlb: " << elmaxmin;
+	delete[] elmaxstr;
+	delete[] elminstlb;
+	for (i = 0; i < m; ++i) {
+		delete[] p[i];
+	}
+	delete[] p;
+	cout << endl;
 	return 0;
 }
+
+/*Matrix50. Дана матрица размера M × N. Преобразовать матрицу, поменяв мес-тами минимальный и максимальный элемент в каждом столбце.*/
+
+int Matrix_50()
+{
+	int m, n;
+	cout << "Enter M and N (columns and stolbics):\n";
+	cin >> m >> n;
+	int** p = new int* [m];
+	int i, j, min = 0, max = 0;
+	for (i = 0; i < m; ++i) {
+		p[i] = new int[n];
+	}
+	cout << "Elements:\n";
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < n; ++j) {
+			cin >> p[i][j];
+		}
+	}
+	cout << endl;
+
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < n; ++j) {
+			if (p[i][j] > p[max][j]) max = i;
+		}
+	}
+
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < n; ++j) {
+			if (p[i][j] < p[min][j]) min = i;
+		}
+	}
+
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < n; ++j) {
+			int temp = p[max][j];
+			p[max][j] = p[min][j];
+			p[min][j] = temp;
+		}
+	}
+
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < n; ++j) {
+			cout << p[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+	for (i = 0; i < m; ++i) {
+		delete[] p[i];
+	}
+	delete[] p;
+	cout << endl;
+	return 0;
+}
+
+/*Matrix65. Дана матрица размера M × N. Удалить ее первый столбец, содержа-щий только положительные элементы. Если требуемых столбцов нет, то вывести матрицу без изменений.*/
+
+int Matrix_65()
+{
+	int m, n, l;
+	cout << "Enter M and N (columns and stolbics):\n";
+	cin >> m >> n;
+	int** p = new int* [m];
+	int i, j;
+	for (i = 0; i < m; ++i) {
+		p[i] = new int[n];
+	}
+	cout << "Elements:\n";
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < n; ++j) {
+			cin >> p[i][j];
+		}
+	}
+	cout << endl;
+	int k;
+
+	int* positive = new int[n];
+	for (j = 0; j < n; ++i) {
+		if (p[0][j] > 0) positive[j] = 1;
+	}
+
+	for (i = 1; i < m; ++i) {
+		for (j = 0; j < n; ++j) {
+			if (p[i - 1][j] > 0 && p[i][j] > 0 && positive[j] == 1) positive[j] = 1;
+			else positive[j] = 0;
+			if (i == m - 1 && positive[j] == 1) {
+				k = j;				
+			}
+		}
+	}
+	for (i = 0; i < m; ++i) {
+		for (j = k + 1; j < n; ++j) {
+			p[i][j - 1] = p[i][j];
+		}
+	}
+	--n;
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < n; ++j) {
+			cout << p[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+	for (i = 0; i < m; ++i) {
+		delete[] p[i];
+	}
+	delete[] p;
+	delete[] positive;
+	cout << endl;
+	return 0;
+}
+
+/*Matrix62. Дана матрица размера M × N и целое число K (1 ≤ K ≤ N). Удалить столбец матрицы с номером K.*/
+
+int Matrix_62()
+{
+	int m, n, k;
+	cout << "Enter M and N (columns and stolbics):\n";
+	cin >> m >> n;
+	cout << "Enter K(1 <= K <= N):\n";
+	cin >> k;
+	int** p = new int* [m];
+	int i, j;
+	for (i = 0; i < m; ++i) {
+		p[i] = new int[n];
+	}
+	cout << "Elements:\n";
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < n; ++j) {
+			cin >> p[i][j];
+		}
+	}
+	cout << endl;
+
+	for (i = k; i < n; ++i) {
+		for (j = 0; j < m; ++j) {
+			p[j][i - 1] = p[j][i];
+		}
+	}
+	n--;
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < n; ++j) {
+			cout << p[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+	for (i = 0; i < m; ++i) {
+		delete[] p[i];
+	}
+	delete[] p;
+	return 0;
+}
+
+/*Matrix80. Дана квадратная матрица A порядка M. Найти сумму элементов ее главной диагонали, то есть диагонали, содержащей следующие элементы:
+A1,1, A2,2, A3,3, …, AM,M.*/
+
+int Matrix_80()
+{
+	int m;
+	cout << "Enter the order of the square matrix:\n";
+	cin >> m;
+	int** p = new int* [m];
+	int i, j;
+	for (i = 0; i < m; ++i) {
+		p[i] = new int[m];
+	}
+	cout << "Elements of the Matrix:\n";
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < m; ++j) {
+			cin >> p[i][j];
+		}
+	}
+	cout << endl;
+	
+	int sum = 0;
+	for (i = 0; i < m; ++i) {
+		sum += p[i][i];
+	}
+	cout << sum;
+	for (int i = 0; i < m; ++i) {
+		delete[]p[i];
+	}
+	delete[]p;
+	return 0;
+}
+
+/**/
