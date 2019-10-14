@@ -446,26 +446,42 @@ int Matrix_83()
 	int m;
 	cout << "Enter the order of the square matrix:\n";
 	cin >> m;
-	int** p = new int* [m];
+	int** P = new int* [m];
 	int i, j;
 	for (i = 0; i < m; ++i) {
-		p[i] = new int[m];
+		P[i] = new int[m];
 	}
 	cout << "Elements of the Matrix:\n";
 	for (i = 0; i < m; ++i) {
 		for (j = 0; j < m; ++j) {
-			cin >> p[i][j];
+			cin >> P[i][j];
 		}
 	}
 	cout << endl;
 
-	for (int k = 0; k < 2*m-1; ++k) {
+	int* Ans = new int[2*m - 1];
+	for (i = 0; i < 2*m - 1; ++i) {
+		Ans[i] = 0;
+	}
 
+	for (int k = 0; k < 2*m-1; ++k) {
+		if (k < m) 
+			for (i = 0; i <= k; ++i) {
+				Ans[k] += P[i][k - i];
+			}
+		else 
+			for (i = m - 1; i >= 0 && k - i < m; --i) {
+				Ans[k] += P[i][k - i];
+			}
+	} 
+	for (i = 0; i < 2*m - 1; ++i) {
+		cout << "Diagonal number = " << i << " ";
+		cout << "Sum of elements = " << Ans[i] << "\n";
 	}
 
 	for (int i = 0; i < m; ++i) {
-		delete[]p[i];
+		delete[]P[i];
 	}
-	delete[]p;
+	delete[]P;
 	return 0;
 }

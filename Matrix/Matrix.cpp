@@ -10,7 +10,7 @@ using namespace std;
 int menu();
 int main()
 {
-	Matrix_62();
+	Matrix_83();
 	/*setlocale(LC_ALL, "Russian");
 	int answer = menu();
 	switch (answer)
