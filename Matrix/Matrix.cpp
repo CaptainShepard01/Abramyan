@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cmath>
 #include <algorithm>
+# include <iomanip>
 #include <conio.h>
 #include "MyLib.h";
 using namespace std;
@@ -9,7 +10,8 @@ using namespace std;
 int menu();
 int main()
 {
-	setlocale(LC_ALL, "Russian");
+	Matrix_20();
+	/*setlocale(LC_ALL, "Russian");
 	int answer = menu();
 	switch (answer)
 	{
@@ -34,10 +36,11 @@ int main()
 	case 18:; break;
 		system("pause");
 		return 0;
-	}
+	}*/
+	return 0;
 }
 
-int menu() {
+/*int menu() {
 	int key = 0;
 	int code;
 	do {
@@ -91,4 +94,4 @@ int menu() {
 	} while (code != 13);
 	system("cls");
 	return key;
-}
+}*/

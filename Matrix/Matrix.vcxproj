@@ -151,7 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Arrays.cpp" />
+    <ClCompile Include="Methods.cpp" />
     <ClCompile Include="Matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
