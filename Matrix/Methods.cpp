@@ -459,25 +459,21 @@ int Matrix_83()
 	}
 	cout << endl;
 
-	int* Ans = new int[2*m - 1];
-	for (i = 0; i < 2*m - 1; ++i) {
-		Ans[i] = 0;
-	}
+	int sum = 0;
 
 	for (int k = 0; k < 2*m-1; ++k) {
+		sum = 0;
 		if (k < m) 
 			for (i = 0; i <= k; ++i) {
-				Ans[k] += P[i][k - i];
+				sum += P[i][k - i];
 			}
 		else 
 			for (i = m - 1; i >= 0 && k - i < m; --i) {
-				Ans[k] += P[i][k - i];
+				sum += P[i][k - i];
 			}
+		cout << "Diagonal number = " << k << " ";
+		cout << "Sum of elements = " << sum << "\n";
 	} 
-	for (i = 0; i < 2*m - 1; ++i) {
-		cout << "Diagonal number = " << i << " ";
-		cout << "Sum of elements = " << Ans[i] << "\n";
-	}
 
 	for (int i = 0; i < m; ++i) {
 		delete[]P[i];
