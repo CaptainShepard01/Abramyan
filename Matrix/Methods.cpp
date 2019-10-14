@@ -338,7 +338,7 @@ int Matrix_65()
 			if (p[i - 1][j] > 0 && p[i][j] > 0 && positive[j] == 1) positive[j] = 1;
 			else positive[j] = 0;
 			if (i == m - 1 && positive[j] == 1) {
-				k = j;				
+				k = j;
 			}
 		}
 	}
@@ -426,7 +426,7 @@ int Matrix_80()
 		}
 	}
 	cout << endl;
-	
+
 	int sum = 0;
 	for (i = 0; i < m; ++i) {
 		sum += p[i][i];
@@ -439,4 +439,33 @@ int Matrix_80()
 	return 0;
 }
 
-/**/
+/*Дана квадратная матрица A порядка M. Найти сумму элементов каж-дой ее диагонали, параллельной побочной (начиная с одноэлементной диа-гонали A1,1).*/
+
+int Matrix_83()
+{
+	int m;
+	cout << "Enter the order of the square matrix:\n";
+	cin >> m;
+	int** p = new int* [m];
+	int i, j;
+	for (i = 0; i < m; ++i) {
+		p[i] = new int[m];
+	}
+	cout << "Elements of the Matrix:\n";
+	for (i = 0; i < m; ++i) {
+		for (j = 0; j < m; ++j) {
+			cin >> p[i][j];
+		}
+	}
+	cout << endl;
+
+	for (int k = 0; k < 2*m-1; ++k) {
+
+	}
+
+	for (int i = 0; i < m; ++i) {
+		delete[]p[i];
+	}
+	delete[]p;
+	return 0;
+}
