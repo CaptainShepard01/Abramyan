@@ -92,16 +92,19 @@ int Matrix_15()
 		cout << endl;
 
 		for (i = k; i < z; ++i) {
-			cout << p[i][m - 1] << endl;
+			cout << p[i][m - 1] << " ";
 		}
+		cout << endl;
 
 		for (i = z - 1; i >= k; --i) {
 			cout << p[m - 1][i] << " ";
 		}
 		cout << endl;
+
 		for (i = z - 1; i >= k; --i) {
-			cout << p[i][0] << endl;
+			cout << p[i][0] << " ";
 		}
+		cout << endl;
 	}
 	for (int i = 0; i < m; ++i) {
 		delete[]p[i];
