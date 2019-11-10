@@ -11,14 +11,14 @@ using namespace std;
 int menu();
 int main()
 {
-	setlocale(LC_ALL, "Russian");
-	int answer = menu();
+	File_3();
+	/*int answer = menu();
 	switch (answer)
 	{
 	case 0:; break;
 		system("pause");
 		return 0;
-	}
+	}*/
 	return 0;
 }
 
