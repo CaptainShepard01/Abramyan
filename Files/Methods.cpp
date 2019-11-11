@@ -19,6 +19,19 @@ void File_3()
 	cout << "Enter the file's name: ";
 	char name[64];
 	cin >> name;
-	FILE name;
-	
+	ofstream output(name);
+	output << a << ' ';
+	for (int i = 1; i < 10; ++i) {
+		a += d;
+		output << a << ' ';
+	}
+	output.close();
+	ifstream input(name);
+	int h;
+	for (int i = 0; i < 10; ++i) {
+		input >> h;
+		cout << h <<' ';
+	}
+	input.close();
+	return;
 }
