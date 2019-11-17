@@ -11,7 +11,7 @@ using namespace std;
 int menu();
 int main()
 {
-	File_3();
+	File_25();
 	/*int answer = menu();
 	switch (answer)
 	{
